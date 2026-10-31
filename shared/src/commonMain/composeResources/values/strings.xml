@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Currency Converter</string>
+    <string name="currency_converter_footer">Built by Rizqi Aryansa</string>
+    <string name="conversion_rates_reference_usd">Conversion rates reference: USD</string>
+    <string name="get_rates">Get Rates</string>
+    <string name="rate_list">Rate List</string>
+    <string name="try_again_by_clicking_get_rates_to_load_all_currencies">Try again by clicking “Get Rates” to load all currencies</string>
+    <string name="oops_something_went_wrong">Oops! Something went wrong</string>
+    <string name="currency_not_found">Currency not found</string>
+    <string name="try_searching_for_another_available_currency">Try searching for another available currency</string>
+</resources>
