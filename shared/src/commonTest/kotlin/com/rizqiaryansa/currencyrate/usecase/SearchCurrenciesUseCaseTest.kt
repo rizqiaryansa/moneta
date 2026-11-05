@@ -21,7 +21,7 @@ class SearchCurrenciesUseCaseTest {
     }
 
     @Test
-    fun `when matching code or name then returns filtered currencies`() = runTest {
+    fun when_matching_code_or_name_then_returns_filtered_currencies() = runTest {
         val currencies = listOf(
             Currency("JPY", "Japanese Yen"),
             Currency("USD", "US Dollar"),
@@ -39,7 +39,7 @@ class SearchCurrenciesUseCaseTest {
     }
 
     @Test
-    fun `when no match found then returns empty list`() = runTest {
+    fun when_no_match_found_then_returns_empty_list() = runTest {
         val currencies = listOf(
             Currency("JPY", "Japanese Yen"),
             Currency("USD", "US Dollar")

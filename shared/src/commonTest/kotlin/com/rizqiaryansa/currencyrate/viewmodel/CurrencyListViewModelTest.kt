@@ -13,7 +13,7 @@ import kotlin.test.assertEquals
 class CurrencyListViewModelTest : CurrencyListViewModelTestFixture() {
 
     @Test
-    fun `when opened then fetches full currency list on initial load`() =
+    fun when_opened_then_fetches_full_currency_list_on_initial_load() =
         runTest(rule.dispatcher.testDispatcher) {
             val domainCurrencies = getDomainCurrencies()
             onGetCurrenciesList_thenReturn(domainCurrencies)
@@ -39,7 +39,7 @@ class CurrencyListViewModelTest : CurrencyListViewModelTestFixture() {
         }
 
     @Test
-    fun `when initial load fails then currencyListStatus is Error`() =
+    fun when_initial_load_fails_then_currencyListStatus_is_Error() =
         runTest(rule.dispatcher.testDispatcher) {
             val errorMessage = "Failed to load currencies"
             onGetCurrenciesList_thenReturnError(RuntimeException(errorMessage))
@@ -58,7 +58,7 @@ class CurrencyListViewModelTest : CurrencyListViewModelTestFixture() {
         }
 
     @Test
-    fun `when search query changed then debounces and calls searchCurrenciesUseCase`() =
+    fun when_search_query_changed_then_debounces_and_calls_searchCurrenciesUseCase() =
         runTest(rule.dispatcher.testDispatcher) {
             val domainCurrencies =
                 getDomainCurrencies().filter { it.code.contains("JPY", ignoreCase = true) }
@@ -87,7 +87,7 @@ class CurrencyListViewModelTest : CurrencyListViewModelTestFixture() {
         }
 
     @Test
-    fun `when search query error then currencyListStatus is Error`() =
+    fun when_search_query_error_then_currencyListStatus_is_Error() =
         runTest(rule.dispatcher.testDispatcher) {
             val errorMessage = "Search failure"
             onSearchCurrencies_thenReturnError("XYZ", RuntimeException(errorMessage))
@@ -109,7 +109,7 @@ class CurrencyListViewModelTest : CurrencyListViewModelTestFixture() {
         }
 
     @Test
-    fun `when OnCountrySelected then emits NavigateBackWithCountrySelected effect`() =
+    fun when_OnCountrySelected_then_emits_NavigateBackWithCountrySelected_effect() =
         runTest(rule.dispatcher.testDispatcher) {
             viewModel.uiEffect.test {
                 viewModel.onAction(CurrencyListUiAction.OnCountrySelected("USD"))

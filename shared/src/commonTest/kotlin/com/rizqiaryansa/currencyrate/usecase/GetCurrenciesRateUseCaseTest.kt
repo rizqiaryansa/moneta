@@ -23,7 +23,7 @@ class GetCurrenciesRateUseCaseTest {
     }
 
     @Test
-    fun `when exchangeRates is empty then returns empty list`() {
+    fun when_exchangeRates_is_empty_then_returns_empty_list() {
         runTest {
             repository.currenciesToReturn = listOf(Currency("USD", "US Dollar"))
             repository.exchangeRatesToReturn = emptyList()
@@ -34,7 +34,7 @@ class GetCurrenciesRateUseCaseTest {
     }
 
     @Test
-    fun `when selected base currency is unsupported then throws IllegalArgumentException`() {
+    fun when_selected_base_currency_is_unsupported_then_throws_IllegalArgumentException() {
         runTest {
             repository.currenciesToReturn = listOf(Currency("USD", "US Dollar"))
             repository.exchangeRatesToReturn = listOf(ExchangeRate("USD", 1.0))
@@ -46,7 +46,7 @@ class GetCurrenciesRateUseCaseTest {
     }
 
     @Test
-    fun `when valid input calculates and converted amounts and sorts by currency name`() {
+    fun when_valid_input_calculates_and_converted_amounts_and_sorts_by_currency_name() {
         runTest {
             val currencies = listOf(
                 Currency("JPY", "Japanese Yen"),

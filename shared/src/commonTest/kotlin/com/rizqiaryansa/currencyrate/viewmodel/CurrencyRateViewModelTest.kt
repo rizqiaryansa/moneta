@@ -14,7 +14,7 @@ import kotlin.test.assertTrue
 class CurrencyRateViewModelTest : CurrencyRateViewModelTestFixture() {
 
     @Test
-    fun `when init then fetches default rates for USD and 1`() {
+    fun when_init_then_fetches_default_rates_for_USD_and_1() {
         runTest(rule.dispatcher.testDispatcher) {
             val convertedList = getConvertedCurrencyList(1.0, "USD")
             onGetCurrenciesRateList_thenReturn(1.0, "USD", convertedList)
@@ -39,7 +39,7 @@ class CurrencyRateViewModelTest : CurrencyRateViewModelTestFixture() {
     }
 
     @Test
-    fun `when OnGetRatesClicked then fetches rates for current currency and amount`() =
+    fun when_OnGetRatesClicked_then_fetches_rates_for_current_currency_and_amount() =
         runTest(rule.dispatcher.testDispatcher) {
             val convertedList = getConvertedCurrencyList(10.0, "USD")
             onGetCurrenciesRateList_thenReturn(10.0, "USD", convertedList)
@@ -73,7 +73,7 @@ class CurrencyRateViewModelTest : CurrencyRateViewModelTestFixture() {
         }
 
     @Test
-    fun `when rate fetch throws error then rateStatus is Error`() =
+    fun when_rate_fetch_throws_error_then_rateStatus_is_Error() =
         runTest(rule.dispatcher.testDispatcher) {
             val errorMessage = "Network timeout"
             onGetCurrenciesRateList_thenReturnError(10.0, "USD", RuntimeException(errorMessage))
@@ -99,7 +99,7 @@ class CurrencyRateViewModelTest : CurrencyRateViewModelTestFixture() {
         }
 
     @Test
-    fun `when OnAmountChanged then amountInput is updated`() =
+    fun when_OnAmountChanged_then_amountInput_is_updated() =
         runTest(rule.dispatcher.testDispatcher) {
             viewModel.uiState.test {
                 awaitItem() // Initial state
@@ -112,7 +112,7 @@ class CurrencyRateViewModelTest : CurrencyRateViewModelTestFixture() {
         }
 
     @Test
-    fun `when OnCurrencySelected then selectedCurrency is updated and new rates fetched`() =
+    fun when_OnCurrencySelected_then_selectedCurrency_is_updated_and_new_rates_fetched() =
         runTest(rule.dispatcher.testDispatcher) {
             val convertedList = getConvertedCurrencyList(1.0, "JPY")
             onGetCurrenciesRateList_thenReturn(1.0, "JPY", convertedList)
@@ -144,7 +144,7 @@ class CurrencyRateViewModelTest : CurrencyRateViewModelTestFixture() {
         }
 
     @Test
-    fun `when bottom sheet opened and dismissed then isCurrencyBottomSheetVisible updates`() =
+    fun when_bottom_sheet_opened_and_dismissed_then_isCurrencyBottomSheetVisible_updates() =
         runTest(rule.dispatcher.testDispatcher) {
             viewModel.uiState.test {
                 awaitItem() // Initial state

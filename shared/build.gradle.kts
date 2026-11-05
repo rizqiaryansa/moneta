@@ -124,9 +124,14 @@ kotlin {
             implementation(libs.kotlin.test)
             implementation(libs.kotlinx.coroutines.test)
             implementation(libs.turbine)
+
+            implementation(libs.ui.test)
         }
         getByName("androidDeviceTest").dependencies {
             implementation(libs.androidx.testRunner)
+            implementation(libs.androidx.espresso.core)
+            implementation(libs.androidx.ui.test.junit4.android)
+            implementation(libs.compose.uiTestManifest)
         }
     }
 }
@@ -140,4 +145,10 @@ dependencies {
     add("kspAndroid", libs.room.compiler)
     add("kspIosArm64", libs.room.compiler)
     add("kspIosSimulatorArm64", libs.room.compiler)
+}
+
+tasks.register("connectedDebugAndroidTest") {
+    group = "verification"
+    description = "Alias for connectedAndroidDeviceTest (com.android.kotlin.multiplatform.library has no debug/release build variants)"
+    dependsOn("connectedAndroidDeviceTest")
 }

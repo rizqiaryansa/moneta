@@ -20,7 +20,7 @@ class GetCurrenciesListUseCaseTest {
     }
 
     @Test
-    fun `when getCurrenciesList then returns currencies sorted alphabetically by name`() = runTest {
+    fun when_getCurrenciesList_then_returns_currencies_sorted_alphabetically_by_name() = runTest {
         val unsorted = listOf(
             Currency("USD", "US Dollar"),
             Currency("AUD", "Australian Dollar"),
