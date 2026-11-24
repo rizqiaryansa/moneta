@@ -2,11 +2,18 @@ package com.rizqiaryansa.currencyrate.data.source.remote
 
 import com.rizqiaryansa.currencyrate.BuildConfig
 import com.rizqiaryansa.currencyrate.data.source.remote.model.CurrencyRateResponse
+import dev.zacsweers.metro.AppScope
+import dev.zacsweers.metro.ContributesBinding
+import dev.zacsweers.metro.Inject
+import dev.zacsweers.metro.SingleIn
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.request.parameter
 
+@SingleIn(AppScope::class)
+@ContributesBinding(AppScope::class)
+@Inject
 class KtorCurrencyRateApiService(
     private val httpClient: HttpClient
 ): CurrencyRateApiService {

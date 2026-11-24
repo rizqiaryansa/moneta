@@ -2,7 +2,12 @@ package com.rizqiaryansa.currencyrate.data.source.local.currencylist
 
 import com.rizqiaryansa.currencyrate.data.source.local.CurrencyCountryData
 import com.rizqiaryansa.currencyrate.data.source.local.CurrencyRateDao
+import dev.zacsweers.metro.AppScope
+import dev.zacsweers.metro.ContributesBinding
+import dev.zacsweers.metro.Inject
 
+@ContributesBinding(AppScope::class)
+@Inject
 class CurrencyListLocalDataSourceImpl(
     private val dao: CurrencyRateDao
 ) : CurrencyListLocalDataSource {

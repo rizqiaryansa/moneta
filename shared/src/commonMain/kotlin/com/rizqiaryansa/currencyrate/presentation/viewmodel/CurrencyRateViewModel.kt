@@ -2,12 +2,21 @@ package com.rizqiaryansa.currencyrate.presentation.viewmodel
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.CreationExtras
 import com.rizqiaryansa.currencyrate.domain.usecase.GetCurrenciesRateUseCase
 import com.rizqiaryansa.currencyrate.presentation.uimodel.compose.CurrencyRateUiEvent
 import com.rizqiaryansa.currencyrate.presentation.uimodel.compose.CurrencyRateUiState
 import com.rizqiaryansa.currencyrate.presentation.uimodel.compose.RateStatus
 import com.rizqiaryansa.currencyrate.presentation.uimodel.toCurrencyRateUiModels
+import dev.zacsweers.metro.AppScope
+import dev.zacsweers.metro.Assisted
+import dev.zacsweers.metro.AssistedFactory
+import dev.zacsweers.metro.AssistedInject
+import dev.zacsweers.metro.ContributesIntoMap
+import dev.zacsweers.metrox.viewmodel.ViewModelAssistedFactory
+import dev.zacsweers.metrox.viewmodel.ViewModelAssistedFactoryKey
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,9 +26,10 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
+@AssistedInject
 class CurrencyRateViewModel(
     private val getCurrenciesRateUseCase: Lazy<GetCurrenciesRateUseCase>,
-    private val savedStateHandle: SavedStateHandle
+    @Assisted private val savedStateHandle: SavedStateHandle
 ): ViewModel() {
 
     private val selectedCurrencyCode = savedStateHandle.getStateFlow(KEY_SELECTED_CURRENCY, DEFAULT_CURRENCY)
@@ -107,5 +117,17 @@ class CurrencyRateViewModel(
         private const val KEY_AMOUNT_INPUT = "key_amount_input"
         private const val DEFAULT_AMOUNT = "1"
         private const val DEFAULT_CURRENCY = "USD"
+
+        @AssistedFactory
+        @ViewModelAssistedFactoryKey(CurrencyRateViewModel::class)
+        @ContributesIntoMap(AppScope::class)
+        fun interface Factory: ViewModelAssistedFactory {
+
+            override fun create(extras: CreationExtras): ViewModel {
+                return create(extras.createSavedStateHandle())
+            }
+
+            fun create(savedStateHandle: SavedStateHandle): CurrencyRateViewModel
+        }
     }
 }

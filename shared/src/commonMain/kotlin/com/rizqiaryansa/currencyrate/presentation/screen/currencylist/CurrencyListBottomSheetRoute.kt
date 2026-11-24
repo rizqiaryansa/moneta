@@ -22,7 +22,6 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.SheetValue
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberBottomSheetState
-import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -46,16 +45,16 @@ import com.rizqiaryansa.currencyrate.presentation.uimodel.compose.CurrencyListUi
 import com.rizqiaryansa.currencyrate.presentation.uimodel.compose.CurrencyListUiEffect
 import com.rizqiaryansa.currencyrate.presentation.uimodel.compose.CurrencyListUiState
 import com.rizqiaryansa.currencyrate.presentation.viewmodel.CurrencyListViewModel
+import dev.zacsweers.metrox.viewmodel.metroViewModel
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.coroutines.launch
-import org.koin.compose.viewmodel.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CurrencyListBottomSheetRoute(
     onCurrencySelected: (String) -> Unit,
     onDismiss: () -> Unit,
-    viewModel: CurrencyListViewModel = koinViewModel()
+    viewModel: CurrencyListViewModel = metroViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 

@@ -9,6 +9,10 @@ import com.rizqiaryansa.currencyrate.presentation.uimodel.compose.CurrencyListUi
 import com.rizqiaryansa.currencyrate.presentation.uimodel.compose.CurrencyListUiEffect
 import com.rizqiaryansa.currencyrate.presentation.uimodel.compose.CurrencyListUiState
 import com.rizqiaryansa.currencyrate.presentation.uimodel.toCurrencyCountryUiModels
+import dev.zacsweers.metro.AppScope
+import dev.zacsweers.metro.ContributesIntoMap
+import dev.zacsweers.metro.Inject
+import dev.zacsweers.metrox.viewmodel.ViewModelKey
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.channels.BufferOverflow
@@ -26,6 +30,9 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlin.time.Duration.Companion.milliseconds
 
+@ViewModelKey(CurrencyListViewModel::class)
+@ContributesIntoMap(AppScope::class)
+@Inject
 @OptIn(FlowPreview::class)
 class CurrencyListViewModel(
     private val getCurrenciesListUseCase: Lazy<GetCurrenciesListUseCase>,
