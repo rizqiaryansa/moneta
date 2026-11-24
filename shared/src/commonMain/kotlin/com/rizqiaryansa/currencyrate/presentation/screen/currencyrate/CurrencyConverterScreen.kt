@@ -48,14 +48,14 @@ import currencyrateappkmcp.shared.generated.resources.app_name
 import currencyrateappkmcp.shared.generated.resources.conversion_rates_reference_usd
 import currencyrateappkmcp.shared.generated.resources.get_rates
 import currencyrateappkmcp.shared.generated.resources.rate_list
+import dev.zacsweers.metrox.viewmodel.metroViewModel
 import kotlinx.collections.immutable.persistentListOf
 import org.jetbrains.compose.resources.stringResource
-import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun CurrencyConvertRoute(
     innerPadding: PaddingValues,
-    viewModel: CurrencyRateViewModel = koinViewModel()
+    viewModel: CurrencyRateViewModel = metroViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 

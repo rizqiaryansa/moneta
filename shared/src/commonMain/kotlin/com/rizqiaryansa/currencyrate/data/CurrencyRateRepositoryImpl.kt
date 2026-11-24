@@ -14,11 +14,18 @@ import com.rizqiaryansa.currencyrate.data.source.toDomainExchangeRates
 import com.rizqiaryansa.currencyrate.domain.CurrencyRateRepository
 import com.rizqiaryansa.currencyrate.domain.model.Currency
 import com.rizqiaryansa.currencyrate.domain.model.ExchangeRate
+import dev.zacsweers.metro.AppScope
+import dev.zacsweers.metro.ContributesBinding
+import dev.zacsweers.metro.Inject
+import dev.zacsweers.metro.SingleIn
 import io.ktor.utils.io.CancellationException
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 
+@SingleIn(AppScope::class)
+@ContributesBinding(AppScope::class)
+@Inject
 class CurrencyRateRepositoryImpl(
     private val remoteDataSource: CurrencyRateRemoteDataSource,
     private val currencyListLocalDataSource: CurrencyListLocalDataSource,

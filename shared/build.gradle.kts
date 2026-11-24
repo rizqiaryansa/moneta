@@ -9,6 +9,7 @@ plugins {
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
+    alias(libs.plugins.metro)
 }
 
 val generateBuildConfig by tasks.registering {
@@ -112,9 +113,8 @@ kotlin {
                 implementation(libs.room.runtime)
                 implementation(libs.sqlite.bundled)
 
-                implementation(libs.koin.core)
-                implementation(libs.koin.compose)
-                implementation(libs.koin.compose.viewmodel)
+                implementation(libs.metrox.viewmodel)
+                implementation(libs.metrox.viewmodel.compose)
             }
         }
         iosMain.dependencies {

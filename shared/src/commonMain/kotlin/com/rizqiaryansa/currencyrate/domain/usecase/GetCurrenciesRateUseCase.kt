@@ -2,9 +2,11 @@ package com.rizqiaryansa.currencyrate.domain.usecase
 
 import com.rizqiaryansa.currencyrate.domain.CurrencyRateRepository
 import com.rizqiaryansa.currencyrate.domain.model.ConvertedCurrency
+import dev.zacsweers.metro.Inject
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 
+@Inject
 class GetCurrenciesRateUseCase(
     private val repo: CurrencyRateRepository
 ) {
